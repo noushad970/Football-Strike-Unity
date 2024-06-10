@@ -16,6 +16,9 @@ public class FootBallShoot : MonoBehaviour
     private Vector2 startTouchPosition, endTouchPosition;
     private bool isLowShot = true;
     private bool isCurlShot = false;
+    [Header("Animation")]
+    public Animator anim;
+
 
     void Start()
     {
@@ -54,10 +57,12 @@ public class FootBallShoot : MonoBehaviour
     {
         if (Input.touchCount > 0)
         {
+            
             Touch touch = Input.GetTouch(0);
 
             switch (touch.phase)
             {
+
                 case TouchPhase.Began:
                     startTouchPosition = touch.position;
                     break;
@@ -66,23 +71,29 @@ public class FootBallShoot : MonoBehaviour
                     endTouchPosition = touch.position;
                     Vector2 swipeDirection = endTouchPosition - startTouchPosition;
                     float swipeLength = swipeDirection.magnitude;
-                    ShootBall(swipeDirection, swipeLength);
+                    
+                    StartCoroutine(ShootBall(swipeDirection, swipeLength));
                     break;
             }
         }
     }
-
-    void ShootBall(Vector2 direction, float swipeLength)
+    
+    IEnumerator ShootBall(Vector2 direction, float swipeLength)
     {
-        Rigidbody ballRb = ball.GetComponent<Rigidbody>();
 
+        // StartCoroutine(PlayShootAnim());
+        Rigidbody ballRb = ball.GetComponent<Rigidbody>();
+        
         // Calculate the force multiplier based on swipe length
+        
         float forceMultiplier = Mathf.Lerp(minForceMultiplier, maxForceMultiplier, swipeLength / Screen.height);
 
         Vector3 forceDirection;
 
+
         if (isLowShot)
         {
+
             // Low shot: Force direction is mostly horizontal
             forceDirection = new Vector3(direction.x, 0, direction.magnitude).normalized;
         }
@@ -98,9 +109,16 @@ public class FootBallShoot : MonoBehaviour
             Vector3 curlDirection = Vector3.Cross(Vector3.forward, forceDirection) * curlFactor;
             ballRb.AddTorque(curlDirection, ForceMode.Impulse);
         }
-
+        if(swipeLength>0)
+        {
+            anim.Play("PenaltyKick");
+        }
+        
+        yield return new WaitForSeconds(0.7f);
         ballRb.AddForce(forceDirection * forceMultiplier, ForceMode.Impulse);
     }
+
+
 }
 
 
