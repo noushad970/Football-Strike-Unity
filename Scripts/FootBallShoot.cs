@@ -9,8 +9,8 @@ public class FootBallShoot : MonoBehaviour
     public Button lowShotButton;
     public Button loftedShotButton;
     public Button curlShotButton;
-    public float maxForceMultiplier = 20f;  // Max force multiplier for the strongest swipe
-    public float minForceMultiplier = 5f;   // Min force multiplier for the weakest swipe
+     float maxForceMultiplier=30f;  // Max force multiplier for the strongest swipe
+     float minForceMultiplier=13f;   // Min force multiplier for the weakest swipe
     public float curlFactor = 1f;
 
     private Vector2 startTouchPosition, endTouchPosition;
@@ -37,11 +37,16 @@ public class FootBallShoot : MonoBehaviour
     {
         isLowShot = true;
         isCurlShot = false;
+        maxForceMultiplier = 25f;
+        minForceMultiplier = 13f;
         Debug.Log("Low shot selected");
     }
 
     void SetLoftedShot()
     {
+
+        maxForceMultiplier = 20f;
+        minForceMultiplier = 10f;
         isLowShot = false;
         isCurlShot = false;
         Debug.Log("Lofted shot selected");
