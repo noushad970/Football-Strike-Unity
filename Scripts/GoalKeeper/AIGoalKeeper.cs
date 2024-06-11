@@ -5,12 +5,20 @@ using UnityEngine;
 public class AIGoalKeeper : MonoBehaviour
 {
     int num;
-    bool isDive=false;
     public Animator anim;
+    private void Update()
+    {
+        if (BallScript.playerIsShooting)
+        {
+
+            StartCoroutine(AIGKSave());
+            BallScript.playerIsShooting = false;
+        }
+    }
     private void Start()
     {
         num = Random.Range(1, 6);
-        StartCoroutine(AIGKSave());
+        
     }
     IEnumerator AIGKSave()
     {

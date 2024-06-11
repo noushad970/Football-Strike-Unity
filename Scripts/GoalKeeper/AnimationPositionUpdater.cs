@@ -18,7 +18,7 @@ public class AnimationPositionUpdater : MonoBehaviour
         Animator tempAnimator = tempObject.AddComponent<Animator>();
         tempAnimator.runtimeAnimatorController = animator.runtimeAnimatorController;
 
-        // Find the animation clip
+        // Find the animation clipy
         AnimationClip clip = null;
         foreach (var animClip in tempAnimator.runtimeAnimatorController.animationClips)
         {
