@@ -47,7 +47,7 @@ public class Goalkeeper : MonoBehaviour
         if(isCenter)
         {
             anim.Play("DiveLeft");
-            StartCoroutine(waitSec());
+           // StartCoroutine(waitSec());
             //StopAllCoroutines();
             //StartCoroutine(MoveToPosition(leftDivePosition));
             isLeft = true;
@@ -64,7 +64,7 @@ public class Goalkeeper : MonoBehaviour
         if(isRight)
         {
             anim.Play("DiveLeft");
-            StartCoroutine(waitSec());
+           // StartCoroutine(waitSec());
             //StopAllCoroutines();
             //StartCoroutine(MoveToPosition(centerPosition));
             isCenter = true;
@@ -79,7 +79,7 @@ public class Goalkeeper : MonoBehaviour
         if (isCenter)
         {
             anim.Play("DiveRight");
-            StartCoroutine(waitSec());
+            //StartCoroutine(waitSec());
             //StopAllCoroutines();
             //StartCoroutine(MoveToPosition(rightDivePosition));
             isLeft = false;
@@ -89,7 +89,7 @@ public class Goalkeeper : MonoBehaviour
         if (isLeft)
         {
             anim.Play("DiveRight");
-            StartCoroutine(waitSec());
+           // StartCoroutine(waitSec());
             //StopAllCoroutines();
             //StartCoroutine(MoveToPosition(centerPosition));
             isLeft = false;
