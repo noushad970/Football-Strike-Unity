@@ -3380,10 +3380,10 @@ GameObject:
   - component: {fileID: 7131583821190979866}
   - component: {fileID: 2651652087658728462}
   - component: {fileID: 3510498919946376203}
-  - component: {fileID: 1137019894137311873}
+  - component: {fileID: 1719008876685927299}
   m_Layer: 0
   m_Name: Alisson
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3474,7 +3474,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6853518234337510369}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 200
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -3493,8 +3493,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!136 &1137019894137311873
-CapsuleCollider:
+--- !u!65 &1719008876685927299
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -3511,11 +3511,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 1.81
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.9, z: 0}
+  serializedVersion: 3
+  m_Size: {x: 1.42, y: 2.5136626, z: 0.3}
+  m_Center: {x: -0, y: 1.2368313, z: -0.16}
 --- !u!1 &6856401708123664193
 GameObject:
   m_ObjectHideFlags: 0
