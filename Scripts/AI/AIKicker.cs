@@ -7,8 +7,8 @@ public class AIKicker : MonoBehaviour
 {
     public GameObject ball; // Reference to the ball GameObject
     public Transform goal;  // Reference to the goal Transform
-     float maxForceMultiplier=15f;  // Max force multiplier for the strongest shot
-     float minForceMultiplier=10f;   // Min force multiplier for the weakest shot
+     float maxForceMultiplier=20f;  // Max force multiplier for the strongest shot
+     float minForceMultiplier=13f;   // Min force multiplier for the weakest shot
     public float loftedShotProbability = 0.5f; // Probability of choosing a lofted shot
     public float curlFactor = 1f; // Factor to add curl to the shot
     public Animator anim;
