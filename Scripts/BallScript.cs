@@ -7,8 +7,8 @@ using UnityEngine.UI;
 public class BallScript : MonoBehaviour
 {
     public GameObject ball;
-    public static float maxForceMultiplier = 30f;  // Max force multiplier for the strongest swipe
-    public static float minForceMultiplier = 13f;   // Min force multiplier for the weakest swipe
+    public static float maxForceMultiplier = 25f;  // Max force multiplier for the strongest swipe
+    public static float minForceMultiplier = 10f;   // Min force multiplier for the weakest swipe
     public float curlFactor = 1f;
     public Camera mainCam;
 
@@ -51,6 +51,18 @@ public class BallScript : MonoBehaviour
             playerIsShooting = false;
             playCharacterAnim = false;
 
+        }
+        if (GameManager.isLowShot)
+        {
+            minForceMultiplier = 15;
+            maxForceMultiplier = 30;
+
+
+        }
+        else
+        {
+            minForceMultiplier = 12;
+            maxForceMultiplier = 30;
         }
     }
 
@@ -102,23 +114,18 @@ public class BallScript : MonoBehaviour
 
         if (GameManager.isLowShot)
         {
-
+            
             // Low shot: Force direction is mostly horizontal
             forceDirection = mainCam.transform.TransformDirection(new Vector3(direction.x, 0, direction.magnitude)).normalized;
         }
         else
         {
+            
             // Lofted shot: Force direction includes vertical component
             forceDirection = mainCam.transform.TransformDirection(new Vector3(direction.x, direction.y, direction.magnitude)).normalized;
         }
 
-        if (isCurlShot)
-        {
-            // Apply curl effect
-            Vector3 curlDirection = Vector3.Cross(Vector3.forward, forceDirection) * curlFactor;
-            ballRb.AddTorque(curlDirection, ForceMode.Impulse);
-        }
-
+        
         yield return new WaitForSeconds(0.7f);
         ballRb.AddForce(forceDirection * forceMultiplier, ForceMode.Impulse);
 

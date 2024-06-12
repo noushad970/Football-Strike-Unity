@@ -1426,7 +1426,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -35.19, y: 0, z: 94.5}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6100864461023815232}
@@ -1477,9 +1477,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3cbe11a1b226fd4595eeaddbaed8b18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 7338592092791664002, guid: bac4217fb74807c42a3b16752a4af60b, type: 3}
-  lowKickForce: 10
-  loftedKickForce: 15
+  ball: {fileID: 5827754985043051707, guid: 64ef8fb3112ae96418c6e9214b720adc, type: 3}
+  loftedShotProbability: 0.5
+  curlFactor: 1
+  lowKickForce: 20
+  loftedKickForce: 10
   kickDelay: 1
 --- !u!1 &2867117048967030576
 GameObject:

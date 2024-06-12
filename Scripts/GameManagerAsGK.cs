@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class GameManagerAsGK : MonoBehaviour
 {
@@ -11,13 +12,23 @@ public class GameManagerAsGK : MonoBehaviour
     public static GameObject spawnedGK;
     public static GameObject spawnedCamGK;
     public Button shootAgainButton;
+    public Button MainMenuButton;
     public ObjectSpawnerGK spawnGKmode;
     // Start is called before the first frame update
     void Start()
     {
         shootAgainButton.onClick.AddListener(resetsKicker);
+        MainMenuButton.onClick.AddListener(mainMenu);
     }
-
+    void mainMenu()
+    {
+        resetsKicker();
+        BallScript.shootplayer = 0;
+        SceneControll.isGoalKeeper = false;
+        SceneControll.isPenaltyKicker= false;
+        SceneManager.LoadScene("Menu");
+        
+    }
     // Update is called once per frame
     void Update()
     {

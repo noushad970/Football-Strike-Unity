@@ -3,7 +3,7 @@ using UnityEngine;
 public class BounceBack : MonoBehaviour
 {
     public string targetTag = "Player"; // Tag of the object to bounce off
-    public float bounceForce = 10f; // Force applied to bounce back
+    public float bounceForce = 5f; // Force applied to bounce back
 
     private Rigidbody rb;
 

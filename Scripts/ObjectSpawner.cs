@@ -45,7 +45,7 @@ public class ObjectSpawner : MonoBehaviour
             objectSpawnerAsKicker();
 
         }
-       
+
         // Instantiate the object at the spawn location's position and rotation
     }
     public void objectSpawnerAsKicker()

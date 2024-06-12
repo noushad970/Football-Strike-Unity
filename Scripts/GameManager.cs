@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -16,9 +17,9 @@ public class GameManager : MonoBehaviour
     public static GameObject spawnedGKAI;
     public static GameObject spawnedCam;
 
-    
+    public Button MainMenuButton;
     //public Button curlShotButton;
-    public static bool isLowShot = true;
+    public static bool isLowShot = false;
     public ObjectSpawner spawner;
     //public AIGoalKeeper AIGK;
 
@@ -33,6 +34,7 @@ public class GameManager : MonoBehaviour
             shootAgainButton.enabled=false;
         }
     }
+
     void Start()
     {
 
@@ -43,7 +45,16 @@ public class GameManager : MonoBehaviour
         shootAgainButton.onClick.AddListener(resetsKicker);
         lowShotButton.onClick.AddListener(SetLowShot);
         loftedShotButton.onClick.AddListener(SetLoftedShot);
+        MainMenuButton.onClick.AddListener(mainMenu);
 
+    }
+    void mainMenu()
+    {
+        resetsKicker();
+        BallScript.shootplayer = 0;
+        SceneControll.isGoalKeeper = false;
+        SceneControll.isPenaltyKicker = false;
+        SceneManager.LoadScene("Menu");
     }
     void SetLowShot()
     {

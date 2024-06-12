@@ -30,7 +30,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: DiveLeft
-  m_Speed: 1
+  m_Speed: 1.57
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1135859493986778200}
@@ -97,7 +97,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: DiveRight
-  m_Speed: 1
+  m_Speed: 1.57
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 5314974929968087235}
@@ -146,7 +146,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: LowDiveLeft
-  m_Speed: 1
+  m_Speed: 1.5
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 4690971909242837376}
@@ -270,7 +270,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: LowDiveRight
-  m_Speed: 1
+  m_Speed: 1.5
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 2349301956212591902}
