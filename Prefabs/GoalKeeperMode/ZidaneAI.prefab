@@ -1477,11 +1477,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3cbe11a1b226fd4595eeaddbaed8b18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ball: {fileID: 3702841603454150284, guid: 92a78604be8e52d40a627f9686954f84, type: 3}
-  goal: {fileID: 3034328193852046462, guid: 12200a1e142babb4ea12a8612e86ca3d, type: 3}
-  loftedShotProbability: 0.5
-  curlFactor: 1
-  anim: {fileID: 1570092800042604809}
+  target: {fileID: 7338592092791664002, guid: bac4217fb74807c42a3b16752a4af60b, type: 3}
+  lowKickForce: 10
+  loftedKickForce: 15
+  kickDelay: 1
 --- !u!1 &2867117048967030576
 GameObject:
   m_ObjectHideFlags: 0

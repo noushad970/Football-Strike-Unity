@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO.Pipes;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,10 +10,10 @@ public class BallScript : MonoBehaviour
     public static float maxForceMultiplier = 30f;  // Max force multiplier for the strongest swipe
     public static float minForceMultiplier = 13f;   // Min force multiplier for the weakest swipe
     public float curlFactor = 1f;
-
+    public Camera mainCam;
 
     private Vector2 startTouchPosition, endTouchPosition;
-    
+
     private bool isCurlShot = false;
     [Header("Animation")]
     public Animator PlayerAnim;
@@ -20,12 +21,12 @@ public class BallScript : MonoBehaviour
     public static bool playerIsShooting = false;
     public static int shootplayer = 0;
     float touchLength;
-    public static bool playCharacterAnim=false;
+    public static bool playCharacterAnim = false;
 
     //public Button curlShotButton;
 
 
-   
+
 
     // Start is called before the first frame update
 
@@ -52,7 +53,7 @@ public class BallScript : MonoBehaviour
 
         }
     }
-    
+
     void SetCurlShot()
     {
         isCurlShot = true;
@@ -78,7 +79,7 @@ public class BallScript : MonoBehaviour
                     Vector2 swipeDirection = endTouchPosition - startTouchPosition;
                     float swipeLength = swipeDirection.magnitude;
                     touchLength = swipeLength;
-                    
+
                     StartCoroutine(ShootBall(swipeDirection, swipeLength));
                     break;
             }
@@ -96,18 +97,19 @@ public class BallScript : MonoBehaviour
         float forceMultiplier = Mathf.Lerp(minForceMultiplier, maxForceMultiplier, swipeLength / Screen.height);
 
         Vector3 forceDirection;
+      //  Vector3 worldDirection = mainCamera.transform.TransformDirection(new Vector3(swipeDirection.x, 0, swipeDirection.y)).normalized;
 
 
         if (GameManager.isLowShot)
         {
 
             // Low shot: Force direction is mostly horizontal
-            forceDirection = new Vector3(direction.x, 0, direction.magnitude).normalized;
+            forceDirection = mainCam.transform.TransformDirection(new Vector3(direction.x, 0, direction.magnitude)).normalized;
         }
         else
         {
             // Lofted shot: Force direction includes vertical component
-            forceDirection = new Vector3(direction.x, direction.y, direction.magnitude).normalized;
+            forceDirection = mainCam.transform.TransformDirection(new Vector3(direction.x, direction.y, direction.magnitude)).normalized;
         }
 
         if (isCurlShot)
@@ -116,10 +118,13 @@ public class BallScript : MonoBehaviour
             Vector3 curlDirection = Vector3.Cross(Vector3.forward, forceDirection) * curlFactor;
             ballRb.AddTorque(curlDirection, ForceMode.Impulse);
         }
-        
+
         yield return new WaitForSeconds(0.7f);
         ballRb.AddForce(forceDirection * forceMultiplier, ForceMode.Impulse);
-       
+
 
     }
 }
+/*
+ * 
+ */

@@ -32,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 3702841603454150284}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -34.1852, y: 0.23879996, z: 96.826675}
+  m_LocalPosition: {x: -74.40764, y: 0.1482273, z: 145.63737}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -178,6 +178,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ball: {fileID: 3702841603454150284}
   curlFactor: 1
+  mainCam: {fileID: 3447228229533677793, guid: 17b205433e1366441868219b0da2963b, type: 3}
   PlayerAnim: {fileID: 4269901653138568218, guid: e5813c5ea042772408799a8998a891fd, type: 3}
-  lowShotButton: {fileID: 6657507023671509320, guid: b457b0e913593b1478c1387df018036e, type: 3}
-  loftedShotButton: {fileID: 8508093019701649399, guid: 5b1ea0a180268f64c8ec2b487ed00c2a, type: 3}

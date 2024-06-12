@@ -10,9 +10,13 @@ public class GameManager : MonoBehaviour
     public Button shootAgainButton;
     public Button lowShotButton;
     public Button loftedShotButton;
+    //kicker
     public static GameObject spawnedBall;
     public static GameObject spawnedPlayer;
     public static GameObject spawnedGKAI;
+    public static GameObject spawnedCam;
+
+    
     //public Button curlShotButton;
     public static bool isLowShot = true;
     public ObjectSpawner spawner;
@@ -36,7 +40,7 @@ public class GameManager : MonoBehaviour
         // Assign button click listeners
         //AIGK.GetComponent<AIGoalKeeper>();
         shootAgainButton.enabled = false;
-        shootAgainButton.onClick.AddListener(resets);
+        shootAgainButton.onClick.AddListener(resetsKicker);
         lowShotButton.onClick.AddListener(SetLowShot);
         loftedShotButton.onClick.AddListener(SetLoftedShot);
 
@@ -46,8 +50,8 @@ public class GameManager : MonoBehaviour
         isLowShot = true;
 
         // isCurlShot = false;
-        BallScript.maxForceMultiplier = 25f;
-        BallScript.minForceMultiplier = 13f;
+        BallScript.maxForceMultiplier = 30f;
+        BallScript.minForceMultiplier = 15f;
         Debug.Log("Low shot selected");
     }
 
@@ -55,29 +59,32 @@ public class GameManager : MonoBehaviour
     {
 
         BallScript.maxForceMultiplier = 20f;
-        BallScript.minForceMultiplier = 10f;
+        BallScript.minForceMultiplier = 13f;
         isLowShot = false;
         // isCurlShot = false;
         Debug.Log("Lofted shot selected");
     }
 
-    void resets()
+    void resetsKicker()
     {
-        DeleteSpawnedObject();
+        DeleteSpawnedObjectKicker();
         StartCoroutine(waitSec());
         BallScript.shootplayer = 0;
-        spawner.objectSpawner();
+        spawner.objectSpawnerAsKicker();
     }
     IEnumerator waitSec()
     {
         yield return new WaitForSeconds(.5f);
     }
-    public void DeleteSpawnedObject()
+    public void DeleteSpawnedObjectKicker()
     {
         Destroy(spawnedBall);
         Destroy(spawnedPlayer);
         Destroy(spawnedGKAI);
+        Destroy(spawnedCam);
+
     }
+    
 
 
 
