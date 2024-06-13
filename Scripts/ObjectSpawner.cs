@@ -35,6 +35,7 @@ public class ObjectSpawner : MonoBehaviour
     Transform spawnBallLocation;
     Transform spawnPlayerLocation;
     Transform spawnCamLocation;
+    public static Transform ballLocation;
 
     int randomNum;
     void Start()
@@ -91,7 +92,7 @@ public class ObjectSpawner : MonoBehaviour
             Debug.Log("player random position 5");
 
         }
-
+        ballLocation= spawnBallLocation;    
         GameManager.spawnedBall = Instantiate(SpawnBall, spawnBallLocation.position, spawnBallLocation.rotation);
         
         GameManager.spawnedPlayer = Instantiate(SpawnPlayer, spawnPlayerLocation.position, spawnPlayerLocation.rotation);

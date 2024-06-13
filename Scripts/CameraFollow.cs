@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    public Transform target;
+    Transform target;
     private Vector3 offset;
     private float y;
     public float SpeedFollow = 5f;
     // Start is called before the first frame update
     void Start()
     {
+        target = ObjectSpawner.ballLocation;
         offset = transform.position;
     }
 
