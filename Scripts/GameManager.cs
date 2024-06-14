@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     public static GameObject spawnedPlayer;
     public static GameObject spawnedGKAI;
     public static GameObject spawnedCam;
-
+    public static GameObject SpawnBallWithCam;
     public Button MainMenuButton;
     //public Button curlShotButton;
     public static bool isLowShot = false;
@@ -93,7 +93,7 @@ public class GameManager : MonoBehaviour
         Destroy(spawnedPlayer);
         Destroy(spawnedGKAI);
         Destroy(spawnedCam);
-
+        Destroy(SpawnBallWithCam);
     }
     
 

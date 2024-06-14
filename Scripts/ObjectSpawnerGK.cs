@@ -130,6 +130,7 @@ public class ObjectSpawnerGK : MonoBehaviour
         cameraClone = GameManagerAsGK.spawnedCamGK;
         spawnCamGK.transform.position = cameraClone.transform.position;
         spawnCamGK.transform.rotation = cameraClone.transform.rotation;
+        GameManagerAsGK.spawnedCamGK.transform.SetParent(GameManagerAsGK.spawnedGK.transform);
 
     }
 }

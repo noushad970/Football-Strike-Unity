@@ -11,7 +11,7 @@ public class BallScript : MonoBehaviour
     public static float minForceMultiplier = 10f;   // Min force multiplier for the weakest swipe
     public float curlFactor = 1f;
     public Camera mainCam;
-
+    public static bool ballSpin;
     private Vector2 startTouchPosition, endTouchPosition;
 
     private bool isCurlShot = false;
@@ -27,7 +27,10 @@ public class BallScript : MonoBehaviour
 
 
 
-
+    private void Start()
+    {
+        ballSpin = false;
+    }
     // Start is called before the first frame update
 
     void Update()
@@ -54,7 +57,7 @@ public class BallScript : MonoBehaviour
         }
         if (GameManager.isLowShot)
         {
-            minForceMultiplier = 15;
+            minForceMultiplier = 20;
             maxForceMultiplier = 30;
 
 
@@ -127,6 +130,7 @@ public class BallScript : MonoBehaviour
 
         
         yield return new WaitForSeconds(0.7f);
+        ballSpin = true;
         ballRb.AddForce(forceDirection * forceMultiplier, ForceMode.Impulse);
 
 

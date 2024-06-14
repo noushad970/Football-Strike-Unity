@@ -8,6 +8,7 @@ public class ObjectSpawner : MonoBehaviour
     public GameObject SpawnGoalKeeperAI;
     public GameObject spawnCamera;
     private GameObject cameraClone;
+    public GameObject SpawnBallWithCam;
 
     public Transform spawnBallLocation1;
     public Transform spawnPlayerLocation1;
@@ -96,12 +97,14 @@ public class ObjectSpawner : MonoBehaviour
         GameManager.spawnedBall = Instantiate(SpawnBall, spawnBallLocation.position, spawnBallLocation.rotation);
         
         GameManager.spawnedPlayer = Instantiate(SpawnPlayer, spawnPlayerLocation.position, spawnPlayerLocation.rotation);
-        
+       // GameObject cloneBall = GameManager.spawnedBall;
         GameManager.spawnedGKAI = Instantiate(SpawnGoalKeeperAI, spawnGKLocation.position, spawnGKLocation.rotation);
         GameManager.spawnedCam= Instantiate(spawnCamera,spawnCamLocation.position, spawnCamLocation.rotation);
         cameraClone = GameManager.spawnedCam;
+
         spawnCamera.transform.position = cameraClone.transform.position;
         spawnCamera.transform.rotation = cameraClone.transform.rotation;
+        GameManager.spawnedCam.transform.SetParent(GameManager.spawnedBall.transform);
     }
     
 }
