@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4363833960526791598
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8184572506775444312}
+  - component: {fileID: -7109982090672027169}
+  - component: {fileID: 1085868914321202041}
+  m_Layer: 0
+  m_Name: Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8184572506775444312
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4363833960526791598}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -46.62, y: 27.17142, z: 80.81915}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-7109982090672027169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4363833960526791598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 1423607453
+  InScenePlacedSourceGlobalObjectIdHash: 0
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 1
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
+--- !u!114 &1085868914321202041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4363833960526791598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e89b481fad6783543b648a28d3b7c035, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpawnBall: {fileID: 3702841603454150284, guid: 92a78604be8e52d40a627f9686954f84, type: 3}
+  SpawnPlayer: {fileID: 5067718134505631033, guid: e5813c5ea042772408799a8998a891fd, type: 3}
+  SpawnGoalKeeperAI: {fileID: 7009463092293413917, guid: 004372a9975f5ec48ac135569dc43674, type: 3}
+  spawnCamera: {fileID: 1251288862213286542, guid: 17b205433e1366441868219b0da2963b, type: 3}
+  SpawnBallWithCam: {fileID: 3702841603454150284, guid: 43ffc4472ad301d4586e006c178b2c9b, type: 3}
+  spawnBallLocation1: {fileID: 3300085954537350529, guid: 4193d8bcce5f1234892ae17f3627bdd1, type: 3}
+  spawnPlayerLocation1: {fileID: 749182797785763561, guid: 7ec3616cf3bafd041b06798ce744e816, type: 3}
+  spawnCamLocation1: {fileID: 4164172529272843019, guid: 34e077e15f5d92b42a00859bece858af, type: 3}
+  spawnGKLocation: {fileID: 9046551495940252019, guid: 5da493831f57ae24d8d3d65cfc1a6d0f, type: 3}

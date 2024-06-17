@@ -81,7 +81,7 @@ public class GameManager : MonoBehaviour
         DeleteSpawnedObjectKicker();
         StartCoroutine(waitSec());
         BallScript.shootplayer = 0;
-        spawner.objectSpawnerAsKicker();
+        spawner.objectSpawnerServerRpc();
     }
     IEnumerator waitSec()
     {

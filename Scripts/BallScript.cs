@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.IO.Pipes;
 using UnityEngine;
 using UnityEngine.UI;
-
-public class BallScript : MonoBehaviour
+using Unity.Netcode;
+public class BallScript : NetworkBehaviour 
 {
     public GameObject ball;
     public static float maxForceMultiplier = 25f;  // Max force multiplier for the strongest swipe
     public static float minForceMultiplier = 10f;   // Min force multiplier for the weakest swipe
     public float curlFactor = 1f;
+    Rigidbody rb;
     public Camera mainCam;
     public static bool ballSpin;
     private Vector2 startTouchPosition, endTouchPosition;
@@ -24,23 +25,25 @@ public class BallScript : MonoBehaviour
     public static bool playCharacterAnim = false;
 
     //public Button curlShotButton;
+    //extra
+    public float forceMagnitude = 10f; // The magnitude of the force applied to curve the ball
+    public float torqueMagnitude = 5f; // The magnitude of the torque applied to curve the ball
+
 
 
 
     private void Start()
     {
         ballSpin = false;
+        rb = GetComponent<Rigidbody>();
     }
     // Start is called before the first frame update
 
     void Update()
     {
-        if (shootplayer > 0)
-        {
-
-            return;
-        }
-        DetectSwipe();
+        if (!IsOwner) return;
+        
+        DetectSwipeServerRpc();
         if (touchLength > 0)
         {
             playCharacterAnim = true;
@@ -67,6 +70,19 @@ public class BallScript : MonoBehaviour
             minForceMultiplier = 12;
             maxForceMultiplier = 30;
         }
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            Vector3 initialForce = transform.forward * forceMagnitude;
+            rb.AddForce(initialForce, ForceMode.VelocityChange);
+
+            // Apply torque to create the curve effect
+            Vector3 torque = new Vector3(1, 1, 0).normalized * torqueMagnitude;
+            rb.AddTorque(torque, ForceMode.VelocityChange);
+        }
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            SwingBallRight();
+        }
     }
 
     void SetCurlShot()
@@ -74,8 +90,14 @@ public class BallScript : MonoBehaviour
         isCurlShot = true;
         Debug.Log("Curl shot selected");
     }
+    [ServerRpc]
+    void DetectSwipeServerRpc()
+    {
+        DetectSwipeClientRpc();
+    }
 
-    void DetectSwipe()
+    [ClientRpc]
+    void DetectSwipeClientRpc()
     {
         if (Input.touchCount > 0)
         {
@@ -134,6 +156,30 @@ public class BallScript : MonoBehaviour
         ballRb.AddForce(forceDirection * forceMultiplier, ForceMode.Impulse);
 
 
+    }
+    void SwingBallRight()
+    {
+        // Add force or adjust trajectory to the right
+       // ballRigidbody.AddForce(Vector3.right * 10, ForceMode.Impulse); // Adjust the force value as needed
+    }
+
+    void SwingBallLeft()
+    {
+        // Add force or adjust trajectory to the left
+      //  ballRigidbody.AddForce(Vector3.left * 10, ForceMode.Impulse); // Adjust the force value as needed
+    }
+    public void ApplyCurveForce()
+    {
+        if (rb != null)
+        {
+            // Apply the initial force to move the ball forward
+            Vector3 initialForce = transform.forward * forceMagnitude;
+            rb.AddForce(initialForce, ForceMode.VelocityChange);
+
+            // Apply torque to create the curve effect
+            Vector3 torque = new Vector3(1, 1, 0).normalized * torqueMagnitude;
+            rb.AddTorque(torque, ForceMode.VelocityChange);
+        }
     }
 }
 /*
